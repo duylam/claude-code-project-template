@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
-    "MAX_THINKING_TOKENS": "5000",
-    "CLAUDE_CODE_SUBAGENT_MODEL": "haiku"
+    "MAX_THINKING_TOKENS": "10000",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
   },
   "permissions": {
     "defaultMode": "bypassPermissions"
@@ -13,8 +13,8 @@
     "commit-commands@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true
+    "feature-dev@claude-plugins-official": true,
+    "worktree-setup@engineering-assembly": true
   },
   "extraKnownMarketplaces": {
     "claude-code-workflows": {
@@ -34,8 +34,16 @@
         "source": "github",
         "repo": "JuliusBrussee/caveman"
       }
+    },
+    "engineering-assembly": {
+      "source": {
+        "source": "github",
+        "repo": "duylam/claude-code-engineering-assembly"
+      }
     }
   },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "medium"
+  "plansDirectory": ".claude/plans",
+  "outputStyle": "Default",
+  "effortLevel": "high"
 }

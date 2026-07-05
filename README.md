@@ -2,65 +2,62 @@
 
 A starter `.claude/` config for Claude Code projects — includes curated plugins, rules, and settings to hit the ground running.
 
-## How to use
+## Install to your project
 
-### Install
+### Copy the config
 
-Copy the `.claude/` directory into your repo root:
+1. Copy the `.claude/` directory into your repo root:
 
 ```bash
 cp -r .claude/ /path/to/your-project/
 ```
 
-Then follow the environment setup below to install the required plugin dependencies.
+2. Open this repo's `.gitignore` and copy the lines marked `# COPY to your .gitignore` into your project's `.gitignore`.
 
-### Environment setup
+### Install Node.js (for the caveman plugin)
 
-#### Caveman plugin
+The [caveman](https://github.com/JuliusBrussee/caveman) plugin is already enabled via the copied `settings.json` and reduces output tokens ~75% while keeping full technical accuracy. It just needs Node ≥18 on your machine to run.
 
-The [caveman](https://github.com/JuliusBrussee/caveman) plugin reduces output tokens ~75% while keeping full technical accuracy.
-
-Install for all agents on your machine (macOS / Linux / WSL):
+If you don't have Node installed, the quickest way is via [nvm](https://github.com/nvm-sh/nvm):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/JuliusBrussee/caveman/main/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+nvm install --lts
 ```
 
-Windows (PowerShell 5.1+):
-
-```powershell
-irm https://raw.githubusercontent.com/JuliusBrussee/caveman/main/install.ps1 | iex
-```
-
-Requires Node ≥18. Safe to re-run. Takes ~30 seconds.
+(Check the [nvm releases](https://github.com/nvm-sh/nvm/releases) for the latest install script version.)
 
 **Trigger:** type `/caveman` or say "talk like caveman". Stop with "normal mode".
 
-#### TypeScript LSP plugin
+### Customize the hooks
 
-The `typescript-lsp` plugin gives Claude real-time TypeScript/JavaScript code intelligence (diagnostics, go-to-definition, find references).
+Hooks ship **disabled by default** (`disableAllHooks: true` in `.claude/settings.json`).
 
-Requires `typescript-language-server` binary:
+To opt in, remove or set `"disableAllHooks": false` in `.claude/settings.json`.
+
+## Reference
+
+### Git submodules
+
+**Initialize submodules after cloning without `--recurse-submodules`:**
 
 ```bash
-npm install -g typescript-language-server typescript
+git submodule update --init --recursive
 ```
 
-Then install the plugin inside Claude Code:
+**Pull latest changes (repo + all submodules):**
 
+```bash
+git pull --recurse-submodules
 ```
-/plugin install typescript-lsp@claude-plugins-official
+
+**Update all submodules to their latest remote commit:**
+
+```bash
+git submodule update --remote --checkout
 ```
 
-After installing, run `/reload-plugins` to activate.
-
-## Customization
-
-### Settings
-
-Refer to the [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference) to customize `.claude/settings.json` — model, permissions, env vars, hooks, and more.
-
-### Plugins
+### Marketplaces
 
 The included `settings.json` declares additional plugin marketplaces under `extraKnownMarketplaces`. To add or swap plugins, edit that section and reference the marketplace GitHub repos:
 
@@ -70,3 +67,7 @@ The included `settings.json` declares additional plugin marketplaces under `extr
 | `knowledge-work-plugins` | [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins#plugin-marketplace) |
 
 Official Anthropic plugins (like `typescript-lsp`, `commit-commands`, `feature-dev`) live in the [claude-plugins-official](https://github.com/anthropics/claude-plugins-official) marketplace which is built into Claude Code — no extra marketplace config needed.
+
+### Settings
+
+Refer to the [Claude Code CLI reference](https://code.claude.com/docs/en/cli-reference) to customize `.claude/settings.json` — model, permissions, env vars, hooks, and more.
