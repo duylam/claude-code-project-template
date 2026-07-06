@@ -13,8 +13,7 @@
     "commit-commands@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true,
-    "worktree-setup@engineering-assembly": true
+    "feature-dev@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-code-workflows": {
