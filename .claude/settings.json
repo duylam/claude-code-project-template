@@ -41,6 +41,7 @@
       }
     }
   },
+  "respondToBashCommands": false,
   "alwaysThinkingEnabled": true,
   "plansDirectory": ".claude/plans",
   "outputStyle": "Default",
