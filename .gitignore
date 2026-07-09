@@ -1,6 +1,6 @@
 # COPY to your .gitignore
 .worktrees/
-.claude/plans/
+**/.claude/plans/
 
 ### IGNORE the below items
 
