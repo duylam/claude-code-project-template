@@ -44,6 +44,6 @@
   "respondToBashCommands": false,
   "alwaysThinkingEnabled": true,
   "plansDirectory": ".claude/plans",
-  "outputStyle": "Default",
+  "outputStyle": "Explanatory",
   "effortLevel": "high"
 }
